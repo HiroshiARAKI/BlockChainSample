@@ -22,6 +22,7 @@ class BlockChain:
 
     def mine_block(self) -> Block:
         print('Start mining block.')
+        current_time = time.time()
         print(f'- Current transaction pool: {self.transaction_pool}')
         print(f'- Current chain: {self.chain}')
         prev: Block = self.chain[-1]
@@ -48,7 +49,8 @@ class BlockChain:
             if new_hash[:self.difficulty] == '0' * self.difficulty:
                 self.chain.append(new_block)
                 self.transaction_pool = TransactionPool()
-                print(f'-- Successfully mined new block with nonce={nonce}.')
+                elapsed = (time.time() - current_time) * 1000
+                print('-- Successfully mined new block with nonce={} (elapsed time={:.2f}ms).'.format(nonce, elapsed))
                 return new_block
 
             nonce += 1

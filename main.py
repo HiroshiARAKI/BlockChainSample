@@ -2,7 +2,7 @@ from blockchain import BlockChain
 from blockchain.Transaction import Transaction
 
 if __name__ == '__main__':
-    blockchain = BlockChain(difficulty=2)
+    blockchain = BlockChain(difficulty=4)
 
     blockchain.add_transaction(Transaction(name="Alice"))
     blockchain.print_chain()
